@@ -18,6 +18,7 @@ The backend of the project is simulated using mock data stored locally. In a rea
   - React.js
   - React Router
   - Tailwind CSS
+  - Context API
 
 - **Backend**:
   - Mock data (JSON)
