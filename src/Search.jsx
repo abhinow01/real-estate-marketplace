@@ -1,17 +1,14 @@
-// components/Search.js
 import React, { useState, useEffect } from 'react';
 import { useHouseContext } from './HouseContext';
 import { Link } from 'react-router-dom';
 
 const Search = () => {
-  // Function to handle search
   const { properties, filterProperties } = useHouseContext();
   const [location, setLocation] = useState('');
   const [priceRange, setPriceRange] = useState('');
   const [bedrooms, setBedrooms] = useState('');
   const [filteredProperties, setFilteredProperties] = useState([]);
 
-  // Function to handle search
   const handleSearch = () => {
     const filters = {
       location: location || undefined,
@@ -22,20 +19,18 @@ const Search = () => {
     setFilteredProperties(filtered);
   };
 
-  // Effect to display all properties initially
   useEffect(() => {
     setFilteredProperties(properties);
   }, [properties]);
 
-  // Effect to handle search when filters change
   useEffect(() => {
     handleSearch();
   }, [location, priceRange, bedrooms]);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 mt-2">
       <div className="flex flex-col md:flex-row items-center justify-between mb-4">
-        <div className="flex space-x-4 mb-4 md:mb-0">
+        <div className="flex flex-col md:flex-row md:space-x-4 mb-4 md:mb-0">
           <select
             value={location}
             onChange={(e) => setLocation(e.target.value)}
@@ -78,13 +73,13 @@ const Search = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProperties.map((property) => (
-          <Link key={property.id} to={`/property/${property.id}`}>
-          <div key={property.id} className="border p-4 rounded-md">
-            <img src={property.image} alt={property.title} className="mb-2" />
-            <h3 className="text-lg font-semibold">{property.title}</h3>
-            <p className="text-gray-600">{property.description}</p>
-            <p className="text-gray-800 font-semibold">${property.price}</p>
-          </div>
+          <Link key={property.id} to={`/property/${property.id}`} className="w-full">
+            <div className="border p-4 rounded-md">
+              <img src={property.image} alt={property.title} className="mb-2 w-full h-48 object-cover" />
+              <h3 className="text-lg font-semibold">{property.title}</h3>
+              <p className="text-gray-600">{property.description}</p>
+              <p className="text-gray-800 font-semibold">${property.price}</p>
+            </div>
           </Link>
         ))}
       </div>
