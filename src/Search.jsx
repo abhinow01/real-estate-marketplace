@@ -36,7 +36,7 @@ const Search = () => {
             onChange={(e) => setLocation(e.target.value)}
             className="block w-full md:w-40 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
           >
-            <option value="">Select Location</option>
+            <option value="">Location</option>
             {Array.from(new Set(properties.map((property) => property.location))).map((location, index) => (
               <option key={index} value={location}>
                 {location}
@@ -48,7 +48,7 @@ const Search = () => {
             onChange={(e) => setPriceRange(e.target.value)}
             className="block w-full md:w-40 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
           >
-            <option value="">Select Price Range</option>
+            <option value="">Price Range</option>
             <option value="0-2000">$0 - $2000</option>
             <option value="2001-4000">$2001 - $4000</option>
             <option value="4001-6000">$4001 - $6000</option>
@@ -58,7 +58,7 @@ const Search = () => {
             onChange={(e) => setBedrooms(e.target.value)}
             className="block w-full md:w-40 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
           >
-            <option value="">Select Bedrooms</option>
+            <option value="">Bedrooms</option>
             <option value="1">1 Bedroom</option>
             <option value="2">2 Bedrooms</option>
             <option value="3">3 Bedrooms</option>

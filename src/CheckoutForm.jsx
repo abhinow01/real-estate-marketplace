@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useHouseContext } from './HouseContext';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutForm = () => {
   const { cart, calculateTotalCost } = useHouseContext();
@@ -14,6 +16,7 @@ const CheckoutForm = () => {
   });
 
   const totalCost = calculateTotalCost();
+  const notify =()=> toast('payment successfull!');
 
   const handleContactInfoChange = (e) => {
     setContactInfo({
@@ -32,6 +35,7 @@ const CheckoutForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Logic to submit checkout form
+    notify();
     console.log('Contact Info:', contactInfo);
     console.log('Payment Details:', paymentDetails);
     console.log('Total Cost:', totalCost);
@@ -40,6 +44,7 @@ const CheckoutForm = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+        <ToastContainer/>
       <h2 className="text-2xl font-bold mb-4">Checkout</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
